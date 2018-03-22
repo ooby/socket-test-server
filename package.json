@@ -1,6 +1,6 @@
 {
   "name": "socket-test-server",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "socket test server",
   "main": "index.js",
   "scripts": {

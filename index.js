@@ -6,10 +6,14 @@ const config = {
         mult: d => d[0] * d[1]
     }
 };
-
-const app = require('express')();
+const express = require('express');
+const app = express();
 const http = require('http').Server(app);
 const vidiq = require('vidiq').server(config, http);
+
+app.use(express.static(__dirname + '/web'));
+
+app.get('*', function (req, res) { res.sendFile(__dirname + '/web/index.html'); });
 
 const port = 5000;
 

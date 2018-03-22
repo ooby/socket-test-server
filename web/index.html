@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+<head>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="http://kjur.github.io/jsrsasign/jsrsasign-latest-all-min.js"></script>
+</head>
+
+<body>
+    <script>
+        var oHeader = { alg: 'HS256', typ: 'JWT' };
+        var username1 = { id: 'id1', surname: 'Ivanov', firstname: 'Ivan' };
+        var token1 = KJUR.jws.JWS.sign("HS256", JSON.stringify(oHeader), JSON.stringify(username1), '$im$alabim');
+        var opts1 = {
+            transports: ['websocket'],
+            'query': 'token=' + token1
+        };
+        var socket = io('http://localhost:5000', opts1);
+        var rpcData = {
+            'jsonrpc': '2.0',
+            'method': 'subtract',
+            'params': [42, 23],
+            'id': 1
+        };
+        socket.on('jsonrpc', function (data) {
+            console.log(data);
+        });
+        socket.emit('jsonrpc', JSON.stringify(rpcData));
+    </script>
+</body>
+
+</html>
