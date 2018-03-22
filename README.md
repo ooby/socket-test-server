@@ -1,4 +1,4 @@
-## Socket testing in React. Server side
+## Socket testing in JS with JSON-RPC
 
 ### START
 1. `npm i`
