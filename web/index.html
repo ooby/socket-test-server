@@ -10,7 +10,7 @@
     <script>
         var oHeader = { alg: 'HS256', typ: 'JWT' };
         var username1 = { id: 'id1', surname: 'Ivanov', firstname: 'Ivan' };
-        var token1 = KJUR.jws.JWS.sign("HS256", JSON.stringify(oHeader), JSON.stringify(username1), '$im$alabim');
+        var token1 = KJUR.jws.JWS.sign('HS256', JSON.stringify(oHeader), JSON.stringify(username1), '$im$alabim');
         var opts1 = {
             transports: ['websocket'],
             'query': 'token=' + token1
